@@ -1,6 +1,8 @@
 import 'package:desktop/utils.dart';
 import 'package:flutter/material.dart';
 
+import 'screens/Categories_Screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -37,11 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
 var newDrawer = Drawer(
   backgroundColor: Colors.grey.shade200,
-  child:  Column(
+  child:  const Column(
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      const DrawerHeader(child: Icon(Icons.account_circle,size: 100,color: Colors.purpleAccent,),
+       DrawerHeader(child: Icon(Icons.account_circle,size: 100,color: Colors.purpleAccent,),
       ),
 
       ListTile(leading: Icon(Icons.home),
@@ -57,15 +59,14 @@ var newDrawer = Drawer(
     ],
   ),);
 var cont =    Container(
-  margin: EdgeInsets.all(10),
+  margin: const EdgeInsets.all(10),
   height: 200,width: 300,color: Colors.purpleAccent,);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
         drawer :newDrawer,
-      body:  Container(
-
+      body:  SafeArea(
         child: Row(
           children: [
             Expanded(
@@ -74,18 +75,20 @@ var cont =    Container(
                 color: Colors.purpleAccent,
                 height: double.infinity,
                 width: 300,
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                child: const Padding(
+                  padding:  EdgeInsets.all(20.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                     
                       CircleAvatar(
                         backgroundImage:AssetImage('assets/images/logo3.png'),
                         radius: 60,
-
+        
                       ),
-                      Text('Inventory Managment System',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w700),)
+                      Text('Inventory Management System',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w700),)
+                   
                     ],
                   ),
                 ),
@@ -94,44 +97,60 @@ var cont =    Container(
             Expanded(
               flex: 3,
               child: Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
+                      const Padding(
+                        padding:  EdgeInsets.only(left: 20),
                         child: Text('My Inventory',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: Colors.purpleAccent),),
                       ),
-                      Container(
-                        child: Wrap(
-                         alignment: WrapAlignment.spaceEvenly,
-                          children: [
-                          main_containers(imagePath: 'assets/images/products.png', title: 'Products'),
-                            main_containers(imagePath: 'assets/images/categories.png', title: 'Categories'),
-
-                            main_containers(imagePath: 'assets/images/sales.png', title: 'Sales'),
-
-                            main_containers(imagePath: 'assets/images/cart.png', title: 'Cart'),
-
-                            main_containers(imagePath: 'assets/images/suppliers.png', title: 'Suppliers'),
-
-                            main_containers(imagePath: 'assets/images/report.png', title: 'Reports'),
-                         Container(
-                           decoration: BoxDecoration(
-                             borderRadius: BorderRadius.circular(10),
-                             color: Colors.purpleAccent,
-                           ),
-                           margin: EdgeInsets.all(10),
-                           height: 100,
-                           width: double.infinity,
-
-                         )
-
-
-
-                          ],
-                        ),
+                      SizedBox(height: 30,),
+                      Wrap(
+                       alignment: WrapAlignment.spaceEvenly,
+                        children: [
+                        main_containers(imagePath: 'assets/images/products.png', title: 'Products', onTab: () {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> const Category_screen()));
+                        },),
+                          main_containers(imagePath: 'assets/images/categories.png', title: 'Categories', onTab: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Category_screen()));
+        
+                          },),
+        
+                          main_containers(imagePath: 'assets/images/sales.png', title: 'Sales', onTab: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Category_screen()));
+        
+                          },),
+        
+                          main_containers(imagePath: 'assets/images/cart.png', title: 'Cart', onTab: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Category_screen()));
+        
+                          },),
+        
+                          main_containers(imagePath: 'assets/images/suppliers.png', title: 'Suppliers', onTab: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Category_screen()));
+        
+                          },),
+        
+                          main_containers(imagePath: 'assets/images/report.png', title: 'Reports', onTab: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Category_screen()));
+        
+                          },),
+                       Container(
+                         decoration: BoxDecoration(
+                           borderRadius: BorderRadius.circular(10),
+                           color: Colors.purpleAccent,
+                         ),
+                         margin: const EdgeInsets.all(10),
+                         height: 100,
+                         width: double.infinity,
+        
+                       )
+        
+        
+        
+                        ],
                       )
                     ],
                   ),
@@ -139,7 +158,7 @@ var cont =    Container(
               ),
             )
           ],
-        )
+        ),
       )
     );
   }
