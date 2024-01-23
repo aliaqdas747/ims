@@ -1,7 +1,12 @@
+import 'package:desktop/screens/Cart_screen.dart';
+import 'package:desktop/screens/Sales.dart';
+import 'package:desktop/screens/Suppliers_screen.dart';
+import 'package:desktop/screens/products_screen.dart';
 import 'package:desktop/utils.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/Categories_Screen.dart';
+import 'screens/Reports.dart';
 
 void main() {
   runApp(const MyApp());
@@ -65,7 +70,7 @@ var cont =    Container(
   Widget build(BuildContext context) {
     return Scaffold(
 
-        drawer :newDrawer,
+
       body:  SafeArea(
         child: Row(
           children: [
@@ -111,30 +116,30 @@ var cont =    Container(
                        alignment: WrapAlignment.spaceEvenly,
                         children: [
                         main_containers(imagePath: 'assets/images/products.png', title: 'Products', onTab: () {
-                           Navigator.push(context, MaterialPageRoute(builder: (context)=> const Category_screen()));
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> const Products_screen()));
                         },),
                           main_containers(imagePath: 'assets/images/categories.png', title: 'Categories', onTab: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Category_screen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const CategoryScreen()));
         
                           },),
         
                           main_containers(imagePath: 'assets/images/sales.png', title: 'Sales', onTab: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Category_screen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Sales()));
         
                           },),
         
                           main_containers(imagePath: 'assets/images/cart.png', title: 'Cart', onTab: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Category_screen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Cart_Screen()));
         
                           },),
         
                           main_containers(imagePath: 'assets/images/suppliers.png', title: 'Suppliers', onTab: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Category_screen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Suppliers()));
         
                           },),
         
                           main_containers(imagePath: 'assets/images/report.png', title: 'Reports', onTab: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Category_screen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Report_Screen()));
         
                           },),
                        Container(
